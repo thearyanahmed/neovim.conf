@@ -1,18 +1,41 @@
 local plugins = {
-
+  {
+    "Pocco81/auto-save.nvim",
+    lazy = false,
+    config = function()
+      require("auto-save").setup {}
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    lazy = false,
+    config = function()
+      require "custom.thearyanahmed.formatter"
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
-    config = function ()
+    config = function()
       require "plugins.configs.lspconfig"
-     require "custom.thearyanahmed.configs.lspconfig"
-    end
+      require "custom.thearyanahmed.configs.lspconfig"
+    end,
   },
   {
     "williamboman/mason.nvim",
-    opts ={
+    opts = {
       ensure_installed = {
+        "prettier",
+        "jq", -- json
+        "stylua", -- lua,
+        "asmfmt",
+        "ast-grep",
+        "blade-formatter",
         "php-cs-fixer",
         "rust-analyzer",
+        "goimports",
+        "yamlfmt",
+        "sqlfmt",
+        "beautysh",
         -- "awk-language-server",
         "bash-language-server",
         "cmake-language-server",
@@ -33,11 +56,9 @@ local plugins = {
         "terraform-ls",
         "typescript-language-server",
         "vue-language-server",
-      }
-    }
-  }
+      },
+    },
+  },
 }
-
-
 
 return plugins
