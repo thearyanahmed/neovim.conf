@@ -1,15 +1,20 @@
-local options = {
+require("conform").setup {
   formatters_by_ft = {
     lua = { "stylua" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    ts = { "prettier" },
+    css = { "prettier" },
+    html = { "prettier" },
+
+    sh = { "beautysh" },
+    php = { "php" },
   },
 
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
-}
+  lsp_fallback = true,
 
-require("conform").setup(options)
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_fallback = true,
+  },
+}
